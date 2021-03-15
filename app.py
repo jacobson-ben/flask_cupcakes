@@ -16,6 +16,12 @@ db.create_all()
 app.config['SECRET_KEY'] = "I'LL NEVER TELL!!"
 
 
+@app.route('/')
+def homepage():
+
+    return render_template('index.html')
+
+
 @app.route("/api/cupcakes")
 def all_cupcakes_data():
     cupcakes = Cupcake.query.all()
