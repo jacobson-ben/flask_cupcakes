@@ -16,7 +16,6 @@ app.config['SECRET_KEY'] = "I'LL NEVER TELL!!"
 
 @app.route('/')
 def homepage():
-
     return render_template('index.html')
 
 
@@ -82,3 +81,16 @@ def delete_cupcake(cupcake_id):
     db.session.commit()
 
     return jsonify(message="Deleted")
+
+
+@app.route('/api/cupcakes/search')
+def search_for_a_flavor():
+    
+    search_term = request.args["search_term"]
+    search_term = search_term.lower()
+    print("hellllllooo", search_term)
+    filtered_results = Cupcake.query.filter_by(flavor=search_term).all()
+    serialized = [c.serialize() for c in filtered_results]
+
+    return jsonify(cupcakes=serialized)
+

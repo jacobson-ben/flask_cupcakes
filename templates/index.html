@@ -7,6 +7,11 @@
     <title>Document</title>
   </head>
   <body>
+    <form id="search-form">
+      <label for="search_term">Search by Flavor</label>
+      <input type="text" name="search_term" id="search_term" required />
+      <button type="submit">Submit</button>
+    </form>
     <table>
       <thead>
         <th>Flavor</th>
@@ -29,6 +34,6 @@
     </form>
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
-    <script src="/static/cupcakes.js"></script>
+    <script src="/static/app.js"></script>
   </body>
 </html>

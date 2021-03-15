@@ -1,6 +1,5 @@
 const API_URL = 'http://localhost:5000/api/'
 
-//ajax - get all cupcakes to list in table
 async function getCupcakesList() {
   const response = await axios.get(`${API_URL}cupcakes`);
   let cupcakeData = response.data.cupcakes;
@@ -35,9 +34,26 @@ async function submitForm(evt) {
   let cupcakeData = response.data.cupcake;
   let createRow = createTableRow(cupcakeData);
   $("#table-body").append(createRow);
-  $("#add-cupcake").trigger("reset")
+  $(".add-cupcake").trigger("reset")
+}
+
+async function filterResults(evt) {
+  evt.preventDefault();
+  $("tbody").empty()
+
+  let searchTerm = $("#search_term").val()
+
+  const response = await axios.get(`${API_URL}cupcakes/search?search_term=${searchTerm}`);
+  let cupcakeData = response.data.cupcakes;
+
+  for(let cupcake of cupcakeData) {
+    let createRow = createTableRow(cupcake)
+    $("#table-body").append(createRow)
+  }
+  $("#search-form").trigger("reset")
 }
 
 
 $(document).ready(getCupcakesList())
 $(".add-cupcake").on("submit", submitForm) 
+$("#search-form").on("submit", filterResults)
