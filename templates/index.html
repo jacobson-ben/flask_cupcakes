@@ -14,19 +14,21 @@
         <th>Rating</th>
         <th>Image</th>
       </thead>
-      <tbody> </tbody>
+      <tbody id="table-body"> </tbody>
     </table>
-    <form>
+    <form class="add-cupcake">
       <label for="flavor">Flavor</label>
-      <input type="text" name="flavor" required />
+      <input type="text" name="flavor" id="flavor" required />
       <label for="size">Size</label>
-      <input type="text" name="size" required />
+      <input type="text" name="size" id="size" required />
       <label for="rating">Rating</label>
-      <input type="text" name="rating" required />
+      <input type="text" name="rating" id="rating" required />
       <label for="image">Image Url</label>
-      <input type="URL" name="image" required />
+      <input type="URL" name="image" id="image" />
+      <button type="submit">Submit</button>
     </form>
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="/static/cupcakes.js"></script>
   </body>
 </html>
